@@ -1,1 +1,18 @@
-<p>This is the partial for view 1.</p>
+<p>Our Story So Far:</p>
+
+<span ng-repeat="word in words | filter:{isInBook:true}">
+		{{word.name}}
+</span>
+<span>...</span>
+
+<p>Proposed words for this round of voting:</p>
+
+<div ng-repeat="word in words">
+		{{word.name}} with {{word.score}} votes
+		<button class="btn" ng-click="clickVote(word)">Click Me</span>
+</div>
+
+<form ng-submit="addWord()">
+	<input type="text" ng-model="name"></input>
+	<button type="submit">Submit</button>
+</form>
