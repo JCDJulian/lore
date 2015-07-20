@@ -34,8 +34,9 @@ module.exports.routes = {
   // Custom routes here...
 
   //JSON API
-  'POST /submit': 'WordController.submit',
-  'POST /vote'  : 'WordController.vote'
+  'POST /submit'      : 'WordController.submit',
+  'POST /vote'        : 'WordController.vote',
+  'GET /fetchwords'   : 'WordController.fetchwords'
 
 
   // If a request to a URL doesn't match any of the custom routes above, it is matched 

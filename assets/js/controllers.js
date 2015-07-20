@@ -4,12 +4,14 @@
 
 angular.module('myApp.controllers', []).
   controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
-  	  $scope.words = [
-  	  	{name:'belght', isInBook:false, score: 2},
-  	  	{name:'Once', isInBook:true, score: 1},
-  	  	{name:'upon', isInBook:true, score: 100},
-  	  	{name:'a', isInBook:true, score: 12}
-  	  ];
+  	  
+      $http.get('/fetchwords').then(function(resp){
+          console.log('Succcess', resp)
+          $scope.words = resp.data
+        }, function(err){
+          console.log(err)
+        })
+      
   	  $scope.addWord = function() {
         $http.post('/submit', {
           name: $scope.name
@@ -30,6 +32,7 @@ angular.module('myApp.controllers', []).
   	  		$scope.name=''
   	  	}
   	  }
+
   	  $scope.clickVote = function(word) {
         word.score += 1;
         $http.post('/vote', {
