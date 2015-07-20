@@ -10,7 +10,6 @@
  		Word.find().exec(function(err, words) {
  			if(err) {return res.json(err.status, {err: err})}
  			else{
- 				console.log(words)
  				return res.json(words)
  			}
  		})

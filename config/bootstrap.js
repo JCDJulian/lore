@@ -12,16 +12,19 @@
 
  	var CronJob = require('cron').CronJob;
  	new CronJob('00 00 0-23 * * *', function(){
+ 		// new CronJob('* * * * * *', function(){
  		console.log("The cron-job ran!")
  		var myQuery = Word.find()
  		var sortString = 'score ASC'
- 		myQuery.sort(sortString)
+ 		myQuery.where({isInBook: false}).sort(sortString)
  		myQuery.exec(function callBack(err, words){
- 			console.log(words)
  			words[0].isInBook = true
  			words[0].save(function(err, s){
  				console.log("Word " + s.name + " added to book.");
  			})
+ 		})
+ 		Word.destroy({isInBook: false}).exec(function deleteWords(err){
+ 			console.log("Deleted unused words")
  		})
  	}, null, true, "America/Los_Angeles");
 
