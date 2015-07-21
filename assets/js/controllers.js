@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', ['$scope', '$http', function($scope, $http) {
+  controller('MyCtrl1', ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
   	  
       $http.get('/fetchwords').then(function(resp){
           console.log('Succcess', resp)
@@ -46,6 +46,19 @@ angular.module('myApp.controllers', []).
           console.log("Ruh-roh raggy!")
         })
       }
+
+    /* CLOCK */
+    $scope.clock = "Loading Timer..."; // initialise the time variable
+    $scope.tickInterval = 1000 //ms
+    var tick = function() {
+        $scope.clock = Date.now() // get the current time
+        $timeout(tick, $scope.tickInterval); // reset the timer
+    }
+    // Start the timer
+    $timeout(tick, $scope.tickInterval);
+
   }])
+  
   .controller('MyCtrl2', [function($scope) {
-  }]);
+  }])
+;
