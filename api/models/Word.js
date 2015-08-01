@@ -10,7 +10,9 @@ module.exports = {
   attributes: {
   	name: {
   		type:'string',
-  		required: true
+  		required: true,
+      minLength: 1,
+      maxLength: 34
   	},
   	score: {
   		type: 'integer',

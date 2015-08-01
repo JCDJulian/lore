@@ -11,6 +11,8 @@ controller('MyCtrl1', ['$scope', '$http', '$timeout', function($scope, $http, $t
     console.log(err)
   })
 
+  $scope.wordLengthLimit = 35;
+
   $scope.addWord = function() {
     $http.post('/submit', {
       name: $scope.name

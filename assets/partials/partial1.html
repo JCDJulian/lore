@@ -7,13 +7,16 @@
 
 <p>Proposed words for this round of voting:</p>
 
-<div ng-repeat="word in words | filter:{isInBook:false}">
+<div ng-repeat="word in words | filter:{isInBook:false} | orderBy:'-score'">
 		{{word.name}} with {{word.score}} votes
 		<button class="btn" ng-click="clickVote(word)">Click Me</span>
 </div>
 
 <form ng-submit="addWord()">
-	<input type="text" ng-model="name"></input>
+	<input type="text" 
+	ng-model="name" 
+	minlength="1"
+	maxlength="34"></input>
 	<button type="submit">Submit</button>
 </form>
 
