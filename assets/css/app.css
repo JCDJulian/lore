@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+body {
+  background-color: #f6f6ee;
+  font-family: Lato, Calibri, Arial, sans-serif;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -27,4 +35,17 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+#header-logo {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+#book-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    font-weight: 300;
+    padding: 5px 8%;
+    text-align: justify;
 }

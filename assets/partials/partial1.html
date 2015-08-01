@@ -1,25 +1,36 @@
 <p>Our Story So Far:</p>
 
+<div id="book-text">
+<div class="row">
 <span ng-repeat="word in words | filter:{isInBook:true}">
 		{{word.name}}
 </span>
 <span>...</span>
+</div>
+</div>
 
+<div id="voting-box">
 <p>Proposed words for this round of voting:</p>
 
-<div ng-repeat="word in words | filter:{isInBook:false} | orderBy:'-score'">
+<div class="row">
+<span class="col-lg-3 col-sm-6 col-xs-12" ng-repeat="word in words | filter:{isInBook:false} | orderBy:'-score'">
 		{{word.name}} with {{word.score}} votes
-		<button class="btn" ng-click="clickVote(word)">Click Me</span>
+		<button class="pull-right" ng-click="clickVote(word)">&#x25B2;</span>
+</span>
 </div>
 
 <form ng-submit="addWord()">
+
 	<input type="text" 
 	ng-model="name" 
 	minlength="1"
-	maxlength="34"></input>
+	maxlength="34"
+	></input>
+
 	<button type="submit">Submit</button>
 </form>
 
 <div>
     <p>{{ clock  | date:'medium'}}</p>
+</div>
 </div>
